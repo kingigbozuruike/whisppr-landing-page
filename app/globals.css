@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		border-width: 0;
+		border-style: solid;
+		border-color: theme('colors.panel');
+	}
+	
+	body {
+		@apply bg-bg text-text;
+		font-feature-settings: "rlig" 1, "calt" 1;
+	}
+	
+	/* Focus styles for accessibility */
+	*:focus-visible {
+		@apply outline-2 outline-offset-2 outline-accent;
+	}
+	
+	/* Reduced motion support */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	.container {
+		@apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+	}
+	
+	.section {
+		@apply py-12 sm:py-16 lg:py-24;
+	}
+	
+	.btn {
+		@apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-50;
+	}
+	
+	.btn-primary {
+		@apply btn bg-accent text-bg hover:bg-accent/90 shadow-subtle hover:shadow-low;
+	}
+	
+	.btn-ghost {
+		@apply btn text-text hover:bg-panel/50 border border-panel hover:border-muted;
+	}
+	
+	.card {
+		@apply rounded-lg bg-panel border border-panel/50 shadow-subtle hover:shadow-low transition-all duration-200;
+	}
+	
+	/* Screen reader only utilities */
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+	
+	.sr-only:focus,
+	.focus\:not-sr-only:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		padding: inherit;
+		margin: inherit;
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
+	}
+	
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.btn-primary {
+			@apply border-2 border-accent;
+		}
+		
+		.btn-ghost {
+			@apply border-2 border-muted;
+		}
+		
+		.card {
+			@apply border-2 border-panel;
+		}
+	}
+}
