@@ -69,25 +69,44 @@ export default function WaitlistForm() {
 		setErrors({})
 
 		try {
-			// Create FormData for Netlify submission
-			const netlifyFormData = new FormData()
-			netlifyFormData.append('form-name', 'waitlist')
-			netlifyFormData.append('email', formData.email)
-			netlifyFormData.append('name', formData.name || '')
-			netlifyFormData.append('why', formData.why || '')
-			netlifyFormData.append('consent', formData.consent ? 'Yes' : 'No')
-
-			// Submit to Netlify Forms via static HTML file
-			const response = await fetch('/__forms.html', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: new URLSearchParams(netlifyFormData as any).toString()
-			})
-
-			if (response.ok) {
+			// Check if we're in development or production
+			const isDevelopment = process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost'
+			
+			if (isDevelopment) {
+				// In development, just log to console and show success
+				console.log('Development Mode - Waitlist Form Payload:', {
+					email: formData.email,
+					name: formData.name || null,
+					why: formData.why || null,
+					consent: formData.consent,
+					timestamp: new Date().toISOString()
+				})
+				
+				// Simulate network delay
+				await new Promise(resolve => setTimeout(resolve, 800))
 				setFormState('success')
+				
 			} else {
-				throw new Error(`HTTP error! status: ${response.status}`)
+				// In production, submit to Netlify Forms
+				const netlifyFormData = new FormData()
+				netlifyFormData.append('form-name', 'waitlist')
+				netlifyFormData.append('email', formData.email)
+				netlifyFormData.append('name', formData.name || '')
+				netlifyFormData.append('why', formData.why || '')
+				netlifyFormData.append('consent', formData.consent ? 'Yes' : 'No')
+
+				// Submit to Netlify Forms via static HTML file
+				const response = await fetch('/__forms.html', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					body: new URLSearchParams(netlifyFormData as any).toString()
+				})
+
+				if (response.ok) {
+					setFormState('success')
+				} else {
+					throw new Error(`HTTP error! status: ${response.status}`)
+				}
 			}
 			
 			// Reset form after success
@@ -97,10 +116,10 @@ export default function WaitlistForm() {
 			}, 3000)
 
 		} catch (error) {
-			console.error('Netlify form submission error:', error)
+			console.error('Form submission error:', error)
 			
-			// Log the submission locally as fallback
-			console.log('Waitlist Form Payload:', {
+			// Always log the submission for debugging
+			console.log('Fallback - Waitlist Form Payload:', {
 				email: formData.email,
 				name: formData.name || null,
 				why: formData.why || null,

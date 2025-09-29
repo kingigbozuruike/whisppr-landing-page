@@ -77,10 +77,18 @@ Set up email notifications for new submissions:
 
 ## Local Development
 
-For local testing, the form will:
-- Show success message to users
-- Log submissions to browser console
-- Not actually submit to Netlify (only works on deployed sites)
+The form automatically detects the environment:
+
+**Development Mode (localhost):**
+- Shows success message to users
+- Logs submissions to browser console with "Development Mode" prefix
+- Simulates network delay for realistic UX
+- No actual submission to Netlify
+
+**Production Mode (deployed site):**
+- Submits to Netlify Forms via `/__forms.html`
+- Stores submissions in Netlify dashboard
+- Shows real success/error states
 
 ## Troubleshooting
 
