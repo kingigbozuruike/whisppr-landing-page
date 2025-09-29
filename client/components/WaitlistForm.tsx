@@ -116,7 +116,7 @@ export default function WaitlistForm() {
 			whileInView="visible"
 			viewport={{ once: true }}
 			onSubmit={handleSubmit}
-			className="w-full max-w-md mx-auto space-y-4 lg:space-y-6 px-4 sm:px-0"
+			className="w-full max-w-sm sm:max-w-md mx-auto space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-0"
 			noValidate
 		>
 			{/* Email Input - Required */}
@@ -125,7 +125,7 @@ export default function WaitlistForm() {
 					Email address *
 				</label>
 				<div className="relative">
-					<Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted z-10" aria-hidden="true" />
+					<Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-muted z-10" aria-hidden="true" />
 					<input
 						type="email"
 						id="email"
@@ -133,10 +133,10 @@ export default function WaitlistForm() {
 						onChange={(e) => handleInputChange('email', e.target.value)}
 						disabled={formState === 'submitting'}
 						className={`
-							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] backdrop-blur-sm
+							w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl border-[0.5px] backdrop-blur-sm
 							transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
 							focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 
-							focus:ring-offset-transparent
+							focus:ring-offset-transparent text-sm sm:text-base min-h-[48px] sm:min-h-[52px]
 							${errors.email 
 								? 'border-coral bg-coral/5 text-text' 
 								: 'border-green bg-panel/10 text-text hover:border-green/80'
@@ -161,7 +161,7 @@ export default function WaitlistForm() {
 					Name <span className="text-muted text-xs">(optional)</span>
 				</label>
 				<div className="relative">
-					<User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted z-10" aria-hidden="true" />
+					<User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-muted z-10" aria-hidden="true" />
 					<input
 						type="text"
 						id="name"
@@ -169,10 +169,10 @@ export default function WaitlistForm() {
 						onChange={(e) => handleInputChange('name', e.target.value)}
 						disabled={formState === 'submitting'}
 						className="
-							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] border-green 
+							w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl border-[0.5px] border-green 
 							bg-panel/10 backdrop-blur-sm text-text transition-all duration-200
 							hover:border-green/80 focus:outline-none focus:ring-2 focus:ring-accent/50 
-							focus:ring-offset-2 focus:ring-offset-transparent
+							focus:ring-offset-2 focus:ring-offset-transparent text-sm sm:text-base min-h-[48px] sm:min-h-[52px]
 							disabled:opacity-50 disabled:cursor-not-allowed
 						"
 						placeholder="Your name"
@@ -186,7 +186,7 @@ export default function WaitlistForm() {
 					Why are you interested? <span className="text-muted text-xs">(optional)</span>
 				</label>
 				<div className="relative">
-					<MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted z-10" aria-hidden="true" />
+					<MessageSquare className="absolute left-3 top-3 sm:top-4 w-4 sm:w-5 h-4 sm:h-5 text-muted z-10" aria-hidden="true" />
 					<textarea
 						id="why"
 						value={formData.why}
@@ -194,10 +194,10 @@ export default function WaitlistForm() {
 						disabled={formState === 'submitting'}
 						rows={3}
 						className="
-							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] border-green 
+							w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl border-[0.5px] border-green 
 							bg-panel/10 backdrop-blur-sm text-text transition-all duration-200
 							hover:border-green/80 focus:outline-none focus:ring-2 focus:ring-accent/50 
-							focus:ring-offset-2 focus:ring-offset-transparent resize-none
+							focus:ring-offset-2 focus:ring-offset-transparent resize-none text-sm sm:text-base
 							disabled:opacity-50 disabled:cursor-not-allowed
 						"
 						placeholder="Tell us about your safety concerns or how you'd use Whisppr..."
@@ -207,8 +207,8 @@ export default function WaitlistForm() {
 
 			{/* Consent Checkbox - Required */}
 			<div>
-				<label className="flex items-start space-x-3 cursor-pointer">
-					<div className="relative mt-0.5">
+				<label className="flex items-start space-x-3 cursor-pointer group">
+					<div className="relative mt-0.5 flex-shrink-0">
 						<input
 							type="checkbox"
 							checked={formData.consent}
@@ -226,14 +226,14 @@ export default function WaitlistForm() {
 									? 'border-coral bg-coral/5'
 									: 'border-panel/60 bg-panel/10'
 							}
-							${formState === 'submitting' ? 'opacity-50' : 'hover:border-accent/60'}
+							${formState === 'submitting' ? 'opacity-50' : 'hover:border-accent/60 group-hover:border-accent/60'}
 						`}>
 							{formData.consent && (
 								<Check className="w-3 h-3 text-white" aria-hidden="true" />
 							)}
 						</div>
 					</div>
-					<span className={`text-sm leading-relaxed ${errors.consent ? 'text-coral' : 'text-muted'}`}>
+					<span className={`text-sm sm:text-base leading-relaxed ${errors.consent ? 'text-coral' : 'text-muted'}`}>
 						I agree to join the Whisppr waitlist and receive updates about the app. *
 					</span>
 				</label>

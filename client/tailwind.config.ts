@@ -7,6 +7,10 @@ export default {
 	],
 	theme: {
 		extend: {
+			screens: {
+				'xs': '480px',
+				'3xl': '1600px',
+			},
 			colors: {
 				bg: '#0A0F14',       // dark background
 				panel: '#0B2239',    // deep navy panels (optional)
