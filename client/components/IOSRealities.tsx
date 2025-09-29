@@ -48,7 +48,7 @@ export function IOSRealities() {
 									SMS routing
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									iOS won\'t allow silent device-sent SMS; we dispatch via backend/Twilio.
+									iOS won&apos;t allow silent device-sent SMS; we dispatch via backend/Twilio.
 								</p>
 							</div>
 						</FadeInUpDiv>

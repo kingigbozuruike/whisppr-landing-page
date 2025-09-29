@@ -77,7 +77,7 @@ export default function WhispprParticles() {
 			clearTimeout(timer)
 			clearInterval(interval)
 		}
-	}, [prefersReducedMotion])
+	}, [prefersReducedMotion, startAnimation])
 
 	return (
 		<div className="relative w-full py-16 bg-slate-900/50">

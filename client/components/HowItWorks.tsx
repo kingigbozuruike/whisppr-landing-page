@@ -48,7 +48,7 @@ export function HowItWorks() {
 									Location snap
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Whisppr grabs a quick single location fix (or safely falls back to last known if it can't get a precise one fast).
+									Whisppr grabs a quick single location fix (or safely falls back to last known if it can&apos;t get a precise one fast).
 								</p>
 							</div>
 						</FadeInUpDiv>

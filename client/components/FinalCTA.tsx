@@ -87,7 +87,7 @@ export default function FinalCTA() {
 						className="mt-16 pt-8 border-t border-panel/20"
 					>
 						<p className="text-muted text-sm max-w-xl mx-auto">
-							No spam, ever. We\'ll only email you with important updates about Whisppr\'s development and launch.
+							No spam, ever. We&apos;ll only email you with important updates about Whisppr&apos;s development and launch.
 						</p>
 					</motion.div>
 				</motion.div>
