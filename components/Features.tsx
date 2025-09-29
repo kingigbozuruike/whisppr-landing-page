@@ -15,32 +15,38 @@ const features = [
 	{
 		icon: Zap,
 		title: 'Discreet triggers',
-		description: 'Widgets, Shortcuts, Back Tap; no loud UI.'
+		description: 'Widgets, Shortcuts, App Intents; Back Tap docs for Shortcut.',
+		badge: 'MVP'
 	},
 	{
 		icon: Clock,
-		title: '5-second Cancel',
-		description: 'Avoid false alarms without slowing real ones.'
+		title: '5-second Undo',
+		description: 'Cancel from a local notification action before anything leaves your phone.',
+		badge: 'MVP'
 	},
 	{
 		icon: Users,
 		title: 'Trusted contacts',
-		description: 'Add 2–3 contacts and verify them once.'
+		description: 'Add & verify 2–3 contacts so they\'re ready when you need them.',
+		badge: 'MVP'
 	},
 	{
 		icon: Eye,
-		title: 'Disguise mode',
-		description: 'Alternate app icon + simple landing shell.'
+		title: 'Location in the alert',
+		description: 'Name, timestamp, and a live/location link in the SMS.',
+		badge: 'MVP'
 	},
 	{
 		icon: Shield,
-		title: 'Privacy-first',
-		description: 'Encrypted storage, minimal data, opt-in.'
+		title: 'Disguise mode',
+		description: 'Alternate icon and a simple landing shell (Calculator/Notes-style).',
+		badge: 'MVP'
 	},
 	{
 		icon: Crown,
-		title: 'Premium (soon)',
-		description: 'Fake call, live tracking, vibe checks, Apple Watch.'
+		title: 'Premium features',
+		description: 'Fake Call, Live tracking, Vibe checks, Profiles, Apple Watch.',
+		badge: 'Soon'
 	}
 ]
 
@@ -85,13 +91,9 @@ export default function Features() {
 					viewport={{ once: true, margin: "-100px" }}
 				>
 					<div className="text-center mb-12 lg:mb-16">
-						<h2 className="font-bold mb-4 lg:mb-6" style={{ fontSize: 'clamp(1.875rem, 3.5vw, 3rem)' }}>
-							Built for{' '}
-							<span className="text-accent">real emergencies</span>
+						<h2 className="font-bold mb-4 lg:mb-6 text-green" style={{ fontSize: 'clamp(2.25rem, 4vw, 4rem)' }}>
+							Features
 						</h2>
-						<p className="text-lg lg:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-							Every feature designed with one goal: getting help when it matters most.
-						</p>
 					</div>
 
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
@@ -105,18 +107,20 @@ export default function Features() {
 									className="group relative"
 								>
 									<div 
-										className="
-											h-full p-6 lg:p-8 rounded-2xl border border-panel/40 bg-panel/20 
-											backdrop-blur-sm transition-all duration-300 ease-out
-											hover:border-accent/30 hover:-translate-y-1 hover:shadow-xl 
-											hover:shadow-accent/5 focus-within:border-accent/30 
-											focus-within:-translate-y-1 focus-within:shadow-xl 
-											focus-within:shadow-accent/5
-										"
+										className="card-glass h-full p-6 lg:p-8 group-hover:-translate-y-1 relative"
 										tabIndex={0}
 										role="article"
 										aria-labelledby={`feature-title-${index}`}
 									>
+										{/* Badge */}
+										<div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${
+											feature.badge === 'MVP' 
+												? 'bg-green/20 text-green border border-green/30' 
+												: 'bg-coral/20 text-coral border border-coral/30'
+										}`}>
+											{feature.badge}
+										</div>
+										
 										<div className="flex items-start space-x-3 lg:space-x-4">
 											<div className="
 												flex-shrink-0 w-10 lg:w-12 h-10 lg:h-12 rounded-xl bg-accent/10 
@@ -128,7 +132,7 @@ export default function Features() {
 													aria-hidden="true" 
 												/>
 											</div>
-											<div className="flex-1 min-w-0">
+											<div className="flex-1 min-w-0 pr-12">
 												<h3 
 													id={`feature-title-${index}`}
 													className="text-lg lg:text-xl font-semibold mb-2 lg:mb-3 text-text"

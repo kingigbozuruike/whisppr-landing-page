@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import NavWhispprParticles from '@/components/NavWhispprParticles'
 
 export function Nav() {
 	const [isScrolled, setIsScrolled] = useState(false)
@@ -38,12 +39,12 @@ export function Nav() {
 			>
 				<div className="container">
 					<div className="flex items-center justify-between h-16 lg:h-20">
-						{/* Brand/Logo */}
+						{/* Brand/Logo with Particle Animation */}
 						<Link 
 							href="/"
-							className="text-xl lg:text-2xl font-bold text-text hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-lg px-2 py-1"
+							className="hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-lg px-2 py-1"
 						>
-							Whisppr
+							<NavWhispprParticles />
 						</Link>
 
 						{/* Center Navigation Links */}
@@ -66,7 +67,7 @@ export function Nav() {
 							{/* CTA Pill */}
 							<motion.a
 								href="#waitlist"
-								className="bg-accent hover:bg-accent/90 text-bg font-medium px-6 py-2.5 rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg shadow-subtle hover:shadow-low"
+								className="bg-accent hover:bg-accent/90 text-bg font-medium px-6 py-2.5 rounded-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg shadow-glow hover:shadow-glow-lg animate-glow-pulse"
 								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.98 }}
 							>

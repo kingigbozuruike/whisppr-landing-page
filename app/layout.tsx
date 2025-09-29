@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Karla } from 'next/font/google'
 import './globals.css'
 import { ReducedMotionProvider } from '@/components/Motion'
 import { Nav } from '@/components/Nav'
+import BackgroundParticles from '@/components/BackgroundParticles'
 
-const inter = Inter({
+const karla = Karla({
 	subsets: ['latin'],
-	variable: '--font-inter',
+	weight: ['200', '300', '400', '500', '600', '700', '800'],
+	style: ['normal', 'italic'],
+	variable: '--font-karla',
+	display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -59,8 +63,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className="dark scroll-smooth">
-			<body className={`${inter.variable} font-sans bg-bg text-text antialiased`}>
+			<body className={`${karla.variable} font-sans bg-bg text-text antialiased`}>
 				<ReducedMotionProvider>
+					<BackgroundParticles />
 					<Nav />
 					{children}
 				</ReducedMotionProvider>

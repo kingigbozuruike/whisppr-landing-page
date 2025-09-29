@@ -2,12 +2,29 @@
 
 import { motion } from 'framer-motion'
 import { useReduced } from './Motion'
-import { Shield, ArrowRight } from 'lucide-react'
+import { Shield } from 'lucide-react'
 
 const privacyPoints = [
-	'Data minimization & encryption',
-	'Verified contacts & explicit consent',
-	'Not a 911 replacement'
+	{
+		title: 'Data minimization & encryption',
+		description: 'Device Keychain + encrypted storage; TLS 1.3 in transport.'
+	},
+	{
+		title: 'Verified contacts',
+		description: 'No alerts to unverified numbers; rate limits prevent abuse.'
+	},
+	{
+		title: 'Clear consent for guardian/premium features',
+		description: 'Explicit opt-in only.'
+	},
+	{
+		title: 'Auto-purge',
+		description: 'Location pings have TTL; you can delete all data.'
+	},
+	{
+		title: '911 policy',
+		description: 'Whisppr does not route to emergency services; we provide native iOS SOS tips.'
+	}
 ]
 
 const bannerVariants = {
@@ -43,13 +60,15 @@ export default function PrivacyBanner() {
 					<div className="w-8 lg:w-10 h-8 lg:h-10 rounded-xl bg-accent/10 flex items-center justify-center">
 						<Shield className="w-4 lg:w-5 h-4 lg:h-5 text-accent" aria-hidden="true" />
 					</div>
-					<h3 className="text-xl lg:text-2xl font-bold text-text">
-						Privacy-first design
+					<h3 className="text-xl lg:text-2xl font-bold text-green">
+						Privacy & Security <span className="text-sm font-normal text-muted">(what we actually do)</span>
 					</h3>
-				</div>				<ul className="space-y-3 lg:space-y-4 mb-6 lg:mb-8" role="list">
+				</div>
+				
+				<ul className="space-y-4 lg:space-y-5 mb-6 lg:mb-8" role="list">
 					{privacyPoints.map((point, index) => (
 						<motion.li
-							key={point}
+							key={point.title}
 							initial={shouldReduceMotion ? {} : { opacity: 0, x: 10 }}
 							whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
 							transition={{ 
@@ -57,46 +76,20 @@ export default function PrivacyBanner() {
 								duration: 0.4 
 							}}
 							viewport={{ once: true }}
-							className="flex items-center space-x-3"
+							className="space-y-1"
 						>
-							<div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" aria-hidden="true" />
-							<span className="text-base lg:text-lg text-text font-medium">
-								{point}
-							</span>
+							<div className="flex items-center space-x-3">
+								<div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" aria-hidden="true" />
+								<span className="text-base lg:text-lg text-text font-semibold">
+									{point.title}
+								</span>
+							</div>
+							<p className="text-sm lg:text-base text-muted leading-relaxed ml-5">
+								{point.description}
+							</p>
 						</motion.li>
 					))}
 				</ul>
-				
-				<div className="space-y-3">
-					<button 
-						className="
-							w-full flex items-center justify-between px-6 py-3 
-							rounded-xl bg-accent/20 border border-accent/30 
-							text-accent font-semibold transition-all duration-200 
-							hover:bg-accent/30 hover:border-accent/50 hover:scale-[1.02]
-							focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 
-							focus:ring-offset-transparent active:scale-[0.98]
-						"
-						onClick={() => {/* TODO: Add privacy policy link */}}
-					>
-						<span>Privacy Policy</span>
-						<ArrowRight className="w-4 h-4" aria-hidden="true" />
-					</button>
-					
-					<button 
-						className="
-							w-full flex items-center justify-between px-6 py-3 
-							rounded-xl border border-accent/30 text-accent font-semibold 
-							transition-all duration-200 hover:bg-accent/10 hover:border-accent/50 
-							hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent/50 
-							focus:ring-offset-2 focus:ring-offset-transparent active:scale-[0.98]
-						"
-						onClick={() => {/* TODO: Add terms link */}}
-					>
-						<span>Terms</span>
-						<ArrowRight className="w-4 h-4" aria-hidden="true" />
-					</button>
-				</div>
 			</div>
 		</motion.div>
 	)

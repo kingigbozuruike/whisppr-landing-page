@@ -73,7 +73,7 @@ export default function FinalCTA() {
 						variants={shouldReduceMotion ? {} : subheadVariants}
 						className="text-lg lg:text-xl xl:text-2xl text-muted mb-12 lg:mb-16 max-w-2xl mx-auto leading-relaxed"
 					>
-						Join the waitlist to be among the first to experience truly discreet emergency alerts.
+						Join the waitlist to help us validate low-latency alerts, reliable undo, and disguise flows before 1.0.
 					</motion.p>
 
 					{/* Waitlist Form */}
@@ -87,7 +87,7 @@ export default function FinalCTA() {
 						className="mt-16 pt-8 border-t border-panel/20"
 					>
 						<p className="text-muted text-sm max-w-xl mx-auto">
-							No spam, ever. We&apos;ll only email you with important updates about Whisppr&apos;s development and launch.
+							No spam, ever. We\'ll only email you with important updates about Whisppr\'s development and launch.
 						</p>
 					</motion.div>
 				</motion.div>

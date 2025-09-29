@@ -99,8 +99,8 @@ const faqs = [
 - ✅ Fully responsive design
 - ✅ Dark theme optimized
 - ✅ Accessibility-first (WCAG 2.1 AA)
-- ✅ Reduced motion support
-- ✅ Interactive phone demo
+- ✅ Advanced motion system with reduced motion support
+- ✅ Protective bubble phone demo with parallax
 - ✅ Form validation
 - ✅ SEO optimized
 - ✅ Type-safe with TypeScript
@@ -132,7 +132,7 @@ const faqs = [
 │   └── page.tsx            # Main page composition
 ├── components/
 │   ├── Hero.tsx            # Landing section
-│   ├── Demo.tsx            # Interactive phone demo
+│   ├── Demo.tsx            # Protective bubble phone demo
 │   ├── HowItWorks.tsx     # Process explanation
 │   ├── Features.tsx        # Feature showcase grid
 │   ├── PersonasPrivacy.tsx # User personas + privacy

@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useReducedMotion, Variants, Transition, Variant, HTMLMotionProps } from 'framer-motion'
-import { createContext, useContext, ReactNode } from 'react'
+import { motion, useReducedMotion, Variants, Transition, Variant, HTMLMotionProps, useMotionValue, useSpring } from 'framer-motion'
+import { createContext, useContext, ReactNode, useEffect, RefObject } from 'react'
 
 // Create a context for reduced motion state
 const ReducedMotionContext = createContext<boolean>(false)
@@ -83,6 +83,30 @@ export const scaleTap: Variants = {
 	whileTap: {
 		scale: 0.98,
 	},
+}
+
+// Bubble-specific motion variants
+export const bubbleBreath: Variants = {
+	animate: {
+		scale: [1, 1.015, 1],
+		opacity: [0.9, 1, 0.9],
+		transition: {
+			duration: 6,
+			repeat: Infinity,
+			ease: 'easeInOut',
+		}
+	}
+}
+
+export const sweepRotate: Variants = {
+	animate: {
+		rotate: [0, 360],
+		transition: {
+			duration: 40,
+			repeat: Infinity,
+			ease: 'linear',
+		}
+	}
 }
 
 // Helper function to wrap motion props with reduced motion consideration
@@ -246,4 +270,63 @@ export function TapButton({
 			{children}
 		</motion.button>
 	)
+}
+
+// useParallax hook for mouse-based parallax effects
+export function useParallax(ref: RefObject<HTMLElement>) {
+	const x = useMotionValue(0)
+	const y = useMotionValue(0)
+	const isReducedMotion = useReduced()
+	
+	// Use spring for smooth motion
+	const springX = useSpring(x, { stiffness: 150, damping: 15 })
+	const springY = useSpring(y, { stiffness: 150, damping: 15 })
+
+	useEffect(() => {
+		// If reduced motion is enabled, set values to 0 and return
+		if (isReducedMotion) {
+			x.set(0)
+			y.set(0)
+			return
+		}
+
+		const handleMouseMove = (event: MouseEvent) => {
+			if (!ref.current) return
+
+			const rect = ref.current.getBoundingClientRect()
+			const centerX = rect.left + rect.width / 2
+			const centerY = rect.top + rect.height / 2
+
+			// Calculate relative position (-1 to 1)
+			const relativeX = (event.clientX - centerX) / (rect.width / 2)
+			const relativeY = (event.clientY - centerY) / (rect.height / 2)
+
+			// Clamp and scale to max movement (10px)
+			const maxMovement = 10
+			const clampedX = Math.max(-1, Math.min(1, relativeX)) * maxMovement
+			const clampedY = Math.max(-1, Math.min(1, relativeY)) * maxMovement
+
+			x.set(clampedX)
+			y.set(clampedY)
+		}
+
+		const handleMouseLeave = () => {
+			// Return to center when mouse leaves
+			x.set(0)
+			y.set(0)
+		}
+
+		// Add event listeners to document for global mouse tracking
+		document.addEventListener('mousemove', handleMouseMove)
+		document.addEventListener('mouseleave', handleMouseLeave)
+
+		// Cleanup
+		return () => {
+			document.removeEventListener('mousemove', handleMouseMove)
+			document.removeEventListener('mouseleave', handleMouseLeave)
+		}
+	}, [ref, x, y, isReducedMotion])
+
+	// Return motion values - they'll be 0 if reduced motion is enabled
+	return { x: springX, y: springY }
 }

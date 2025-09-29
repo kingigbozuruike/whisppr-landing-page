@@ -125,7 +125,7 @@ export default function WaitlistForm() {
 					Email address *
 				</label>
 				<div className="relative">
-					<Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted" aria-hidden="true" />
+					<Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted z-10" aria-hidden="true" />
 					<input
 						type="email"
 						id="email"
@@ -133,13 +133,13 @@ export default function WaitlistForm() {
 						onChange={(e) => handleInputChange('email', e.target.value)}
 						disabled={formState === 'submitting'}
 						className={`
-							w-full pl-10 pr-4 py-3 rounded-xl border backdrop-blur-sm
+							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] backdrop-blur-sm
 							transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
 							focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 
 							focus:ring-offset-transparent
 							${errors.email 
 								? 'border-coral bg-coral/5 text-text' 
-								: 'border-panel/40 bg-panel/10 text-text hover:border-panel/60'
+								: 'border-green bg-panel/10 text-text hover:border-green/80'
 							}
 						`}
 						placeholder="your@email.com"
@@ -161,7 +161,7 @@ export default function WaitlistForm() {
 					Name <span className="text-muted text-xs">(optional)</span>
 				</label>
 				<div className="relative">
-					<User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted" aria-hidden="true" />
+					<User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted z-10" aria-hidden="true" />
 					<input
 						type="text"
 						id="name"
@@ -169,9 +169,9 @@ export default function WaitlistForm() {
 						onChange={(e) => handleInputChange('name', e.target.value)}
 						disabled={formState === 'submitting'}
 						className="
-							w-full pl-10 pr-4 py-3 rounded-xl border border-panel/40 
+							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] border-green 
 							bg-panel/10 backdrop-blur-sm text-text transition-all duration-200
-							hover:border-panel/60 focus:outline-none focus:ring-2 focus:ring-accent/50 
+							hover:border-green/80 focus:outline-none focus:ring-2 focus:ring-accent/50 
 							focus:ring-offset-2 focus:ring-offset-transparent
 							disabled:opacity-50 disabled:cursor-not-allowed
 						"
@@ -186,7 +186,7 @@ export default function WaitlistForm() {
 					Why are you interested? <span className="text-muted text-xs">(optional)</span>
 				</label>
 				<div className="relative">
-					<MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted" aria-hidden="true" />
+					<MessageSquare className="absolute left-3 top-3 w-5 h-5 text-muted z-10" aria-hidden="true" />
 					<textarea
 						id="why"
 						value={formData.why}
@@ -194,9 +194,9 @@ export default function WaitlistForm() {
 						disabled={formState === 'submitting'}
 						rows={3}
 						className="
-							w-full pl-10 pr-4 py-3 rounded-xl border border-panel/40 
+							w-full pl-10 pr-4 py-3 rounded-xl border-[0.5px] border-green 
 							bg-panel/10 backdrop-blur-sm text-text transition-all duration-200
-							hover:border-panel/60 focus:outline-none focus:ring-2 focus:ring-accent/50 
+							hover:border-green/80 focus:outline-none focus:ring-2 focus:ring-accent/50 
 							focus:ring-offset-2 focus:ring-offset-transparent resize-none
 							disabled:opacity-50 disabled:cursor-not-allowed
 						"
@@ -250,10 +250,11 @@ export default function WaitlistForm() {
 				type="submit"
 				disabled={formState === 'submitting'}
 				className="
-					w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200
-					bg-accent text-white hover:bg-accent/90 focus:outline-none focus:ring-2 
+					w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300
+					bg-accent text-black hover:bg-accent/90 focus:outline-none focus:ring-2 
 					focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-transparent
 					disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]
+					shadow-glow hover:shadow-glow-md
 				"
 			>
 				{formState === 'submitting' ? (
@@ -261,7 +262,7 @@ export default function WaitlistForm() {
 						<motion.div
 							animate={{ rotate: 360 }}
 							transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-							className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+							className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full"
 						/>
 						<span>Joining waitlist...</span>
 					</span>

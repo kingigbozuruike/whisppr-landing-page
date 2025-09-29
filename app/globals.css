@@ -31,6 +31,25 @@
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.01ms !important;
 		}
+		
+		.animate-glow-pulse {
+			animation: none !important;
+			box-shadow: 0 0 12px rgba(119,255,119,0.3) !important;
+		}
+	}
+	
+	/* Glow pulse animation */
+	@keyframes glow-pulse {
+		0%, 100% {
+			box-shadow: 0 0 12px rgba(119,255,119,0.3);
+		}
+		50% {
+			box-shadow: 0 0 18px rgba(119,255,119,0.5), 0 0 25px rgba(119,255,119,0.2);
+		}
+	}
+	
+	.animate-glow-pulse {
+		animation: glow-pulse 4s ease-in-out infinite;
 	}
 }
 
@@ -48,15 +67,59 @@
 	}
 	
 	.btn-primary {
-		@apply btn bg-accent text-bg hover:bg-accent/90 shadow-subtle hover:shadow-low;
+		@apply btn bg-green text-bg hover:bg-green-dark shadow-glow hover:shadow-glow-md transition-all duration-300;
 	}
 	
 	.btn-ghost {
-		@apply btn text-text hover:bg-panel/50 border border-panel hover:border-muted;
+		@apply btn text-green hover:bg-green-soft/20 border border-green/30 hover:border-green transition-all duration-200;
+	}
+	
+	.btn-glass {
+		@apply btn text-green border border-green/20 backdrop-blur-sm bg-green/5 hover:bg-green/10 hover:border-green/40 shadow-lg hover:shadow-xl transition-all duration-300;
+		background: rgba(119, 255, 119, 0.03);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
+	
+	.btn-glass:hover {
+		background: rgba(119, 255, 119, 0.08);
+		box-shadow: 0 8px 32px rgba(119, 255, 119, 0.1), 0 4px 16px rgba(0, 0, 0, 0.1);
 	}
 	
 	.card {
 		@apply rounded-lg bg-panel border border-panel/50 shadow-subtle hover:shadow-low transition-all duration-200;
+	}
+	
+	.card-glass {
+		@apply rounded-lg border border-green/20 shadow-lg hover:shadow-xl transition-all duration-300;
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+	}
+	
+	.card-glass:hover {
+		background: rgba(255, 255, 255, 0.05);
+		border-color: rgba(119, 255, 119, 0.3);
+		box-shadow: 0 12px 40px rgba(119, 255, 119, 0.05), 0 6px 20px rgba(0, 0, 0, 0.1);
+	}
+	
+	.input-glass {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border: 1px solid rgba(119, 255, 119, 0.15);
+		transition: all 0.3s ease;
+	}
+	
+	.input-glass:hover {
+		background: rgba(255, 255, 255, 0.05);
+		border-color: rgba(119, 255, 119, 0.25);
+	}
+	
+	.input-glass:focus {
+		background: rgba(255, 255, 255, 0.06);
+		border-color: rgba(119, 255, 119, 0.4);
+		box-shadow: 0 0 0 2px rgba(119, 255, 119, 0.1);
 	}
 	
 	/* Screen reader only utilities */
@@ -94,8 +157,46 @@
 			@apply border-2 border-muted;
 		}
 		
+		.btn-glass {
+			@apply border-2 border-green bg-green/10;
+			backdrop-filter: none;
+			-webkit-backdrop-filter: none;
+		}
+		
 		.card {
 			@apply border-2 border-panel;
+		}
+		
+		.card-glass {
+			@apply border-2 border-green bg-panel/20;
+			backdrop-filter: none;
+			-webkit-backdrop-filter: none;
+		}
+	}
+}
+
+@keyframes pulseGreen {
+	0%, 100% { box-shadow: 0 0 30px rgba(119,255,119,0.3); }
+	50% { box-shadow: 0 0 60px rgba(119,255,119,0.6); }
+}
+
+@layer utilities {
+	.glow-pulse {
+		animation: pulseGreen 6s ease-in-out infinite;
+	}
+	
+	@media (prefers-reduced-motion: reduce) {
+		.glow-pulse {
+			animation: none;
+			box-shadow: 0 0 30px rgba(119,255,119,0.3);
+		}
+		
+		.btn-glass, .card-glass {
+			transition: none;
+		}
+		
+		.btn-glass:hover, .card-glass:hover {
+			transform: none;
 		}
 	}
 }

@@ -9,27 +9,27 @@ const faqData = [
 	{
 		id: 'faq-1',
 		question: 'Does Whisppr call 911?',
-		answer: 'No. Whisppr notifies contacts.'
+		answer: 'No. We notify your contacts. We don\'t route emergency services; we show a tip linking to iOS Emergency SOS.'
 	},
 	{
 		id: 'faq-2', 
-		question: 'Will this drain my battery?',
-		answer: 'No heavy background services.'
+		question: 'Why a 5-second undo?',
+		answer: 'To prevent accidental sends while keeping response time low. It\'s built into the alert pipeline.'
 	},
 	{
 		id: 'faq-3',
-		question: 'What if I\'m offline?',
-		answer: 'We queue until signal returns.'
+		question: 'How quickly do messages go out?',
+		answer: 'Target p95 SMS within 8 seconds after trigger (healthy network).'
 	},
 	{
 		id: 'faq-4',
-		question: 'Can I choose who gets alerted?',
-		answer: 'Yes; profiles will be available.'
+		question: 'What if I\'m offline or GPS fails?',
+		answer: 'We queue the alert to send when you\'re back online, and can fall back to last known location with accuracy noted.'
 	},
 	{
 		id: 'faq-5',
-		question: 'Does it send silent background messages?',
-		answer: 'No; iOS disallows background SMS.'
+		question: 'Can I disguise the app?',
+		answer: 'Yes—alternate icon + simple shell (Calculator/Notes-style).'
 	}
 ]
 
@@ -126,7 +126,7 @@ function FAQItem({ faq, isOpen, onToggle, shouldReduceMotion }: FAQItemProps) {
 	return (
 		<motion.div
 			variants={shouldReduceMotion ? {} : itemVariants}
-			className="border border-panel/40 rounded-xl overflow-hidden bg-panel/10 backdrop-blur-sm"
+			className="card-glass overflow-hidden"
 		>
 			<button
 				ref={buttonRef}
@@ -200,12 +200,11 @@ export default function FAQ() {
 					viewport={{ once: true, margin: "-100px" }}
 				>
 					<div className="text-center mb-12">
-						<h2 className="font-bold mb-4 lg:mb-6" style={{ fontSize: 'clamp(1.875rem, 3.5vw, 3rem)' }}>
-							Frequently asked{' '}
-							<span className="text-accent">questions</span>
+						<h2 className="font-bold mb-4 lg:mb-6 text-green" style={{ fontSize: 'clamp(2.25rem, 4vw, 4rem)' }}>
+							FAQs
 						</h2>
-						<p className="text-lg lg:text-xl text-muted max-w-2xl mx-auto leading-relaxed">
-							Get answers to common questions about how Whisppr works and protects your privacy.
+						<p className="text-xl lg:text-2xl text-muted max-w-2xl mx-auto leading-relaxed">
+							Technical answers grounded in how Whisppr actually works.
 						</p>
 					</div>
 

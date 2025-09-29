@@ -2,15 +2,15 @@
 
 import { 
 	FadeInUpDiv, 
-	SlideInFromRightDiv, 
+	SlideInFromRightDiv,
 	StaggerContainer, 
 	TapButton,
 } from '@/components/Motion'
-import { Demo } from '@/components/Demo'
+import HeroBubbleDemo from '@/components/HeroBubbleDemo'
 
 export function Hero() {
 	return (
-		<section className="relative min-h-screen flex items-center bg-bg text-text pt-16 lg:pt-20">
+		<section className="relative min-h-[85vh] flex items-center text-text pt-32 lg:pt-40 pb-16 lg:pb-24">
 			<div className="container">
 				<div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 					{/* Left Column - Text Content */}
@@ -30,10 +30,10 @@ export function Hero() {
 						
 						<FadeInUpDiv>
 							<div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-6 lg:mb-8">
-								<TapButton className="btn-primary text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4">
+								<TapButton className="btn-primary text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4 animate-glow-pulse">
 									Join Waitlist
 								</TapButton>
-								<TapButton className="btn-ghost text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4">
+								<TapButton className="btn-glass text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4">
 									Watch 20-sec Demo
 								</TapButton>
 							</div>
@@ -47,37 +47,24 @@ export function Hero() {
 								</span>
 								<span className="flex items-center gap-1">
 									<div className="w-1 h-1 bg-accent rounded-full"></div>
-									iPhone widgets & Shortcuts
+									Notify discreetly
 								</span>
 								<span className="flex items-center gap-1">
 									<div className="w-1 h-1 bg-accent rounded-full"></div>
-									Optional disguise icon
+									Fast alerts
 								</span>
 							</div>
 						</FadeInUpDiv>
 					</StaggerContainer>
 					
-					{/* Right Column - Phone Mock */}
+					{/* Right Column - HeroBubbleDemo */}
 					<SlideInFromRightDiv className="flex justify-center lg:justify-end">
-						<PhoneMock />
+						<div className="w-full max-w-sm lg:max-w-md xl:max-w-lg">
+							<HeroBubbleDemo />
+						</div>
 					</SlideInFromRightDiv>
 				</div>
 			</div>
 		</section>
-	)
-}
-
-// Phone mockup component with demo
-function PhoneMock() {
-	return (
-		<div className="relative">
-			{/* Phone frame */}
-			<div className="w-80 h-[640px] bg-panel rounded-[3rem] p-2 shadow-low">
-				<Demo />
-			</div>
-			
-			{/* Glow effect */}
-			<div className="absolute inset-0 bg-accent/5 rounded-[3rem] blur-2xl -z-10"></div>
-		</div>
 	)
 }
