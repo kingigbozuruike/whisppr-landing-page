@@ -1,9 +1,12 @@
 [build]
-  # Build command
-  command = "cd client && npm install && npm run build"
+  # Base directory - Netlify will operate from this folder
+  base = "client"
   
-  # Directory to publish
-  publish = "client/.next"
+  # Build command - no need to cd since we're already in client
+  command = "npm install && npm run build"
+  
+  # Directory to publish - relative to base directory
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
