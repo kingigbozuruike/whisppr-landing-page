@@ -69,19 +69,26 @@ export default function WaitlistForm() {
 		setErrors({})
 
 		try {
-			// Simulate API call
-			await new Promise(resolve => setTimeout(resolve, 1500))
-			
-			// Log the payload as requested
-			console.log('Waitlist Form Payload:', {
-				email: formData.email,
-				name: formData.name || null,
-				why: formData.why || null,
-				consent: formData.consent,
-				timestamp: new Date().toISOString()
+			// Create FormData for Netlify submission
+			const netlifyFormData = new FormData()
+			netlifyFormData.append('form-name', 'waitlist')
+			netlifyFormData.append('email', formData.email)
+			netlifyFormData.append('name', formData.name || '')
+			netlifyFormData.append('why', formData.why || '')
+			netlifyFormData.append('consent', formData.consent ? 'Yes' : 'No')
+
+			// Submit to Netlify
+			const response = await fetch('/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: new URLSearchParams(netlifyFormData as any).toString()
 			})
 
-			setFormState('success')
+			if (response.ok) {
+				setFormState('success')
+			} else {
+				throw new Error(`HTTP error! status: ${response.status}`)
+			}
 			
 			// Reset form after success
 			setTimeout(() => {
@@ -90,7 +97,17 @@ export default function WaitlistForm() {
 			}, 3000)
 
 		} catch (error) {
-			console.error('Waitlist submission error:', error)
+			console.error('Netlify form submission error:', error)
+			
+			// Log the submission locally as fallback
+			console.log('Waitlist Form Payload:', {
+				email: formData.email,
+				name: formData.name || null,
+				why: formData.why || null,
+				consent: formData.consent,
+				timestamp: new Date().toISOString()
+			})
+			
 			setFormState('error')
 			
 			// Reset error state after 3 seconds
@@ -118,7 +135,15 @@ export default function WaitlistForm() {
 			onSubmit={handleSubmit}
 			className="w-full max-w-sm sm:max-w-md mx-auto space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-0"
 			noValidate
+			name="waitlist"
+			method="POST"
+			netlify-honeypot="bot-field"
+			data-netlify="true"
 		>
+			{/* Hidden fields for Netlify */}
+			<input type="hidden" name="form-name" value="waitlist" />
+			<input type="hidden" name="bot-field" />
+			
 			{/* Email Input - Required */}
 			<div>
 				<label htmlFor="email" className="block text-sm font-medium text-text mb-2">
@@ -129,6 +154,7 @@ export default function WaitlistForm() {
 					<input
 						type="email"
 						id="email"
+						name="email"
 						value={formData.email}
 						onChange={(e) => handleInputChange('email', e.target.value)}
 						disabled={formState === 'submitting'}
@@ -165,6 +191,7 @@ export default function WaitlistForm() {
 					<input
 						type="text"
 						id="name"
+						name="name"
 						value={formData.name}
 						onChange={(e) => handleInputChange('name', e.target.value)}
 						disabled={formState === 'submitting'}
@@ -189,6 +216,7 @@ export default function WaitlistForm() {
 					<MessageSquare className="absolute left-3 top-3 sm:top-4 w-4 sm:w-5 h-4 sm:h-5 text-muted z-10" aria-hidden="true" />
 					<textarea
 						id="why"
+						name="why"
 						value={formData.why}
 						onChange={(e) => handleInputChange('why', e.target.value)}
 						disabled={formState === 'submitting'}
@@ -211,6 +239,7 @@ export default function WaitlistForm() {
 					<div className="relative mt-0.5 flex-shrink-0">
 						<input
 							type="checkbox"
+							name="consent"
 							checked={formData.consent}
 							onChange={(e) => handleInputChange('consent', e.target.checked)}
 							disabled={formState === 'submitting'}
