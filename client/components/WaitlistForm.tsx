@@ -77,8 +77,8 @@ export default function WaitlistForm() {
 			netlifyFormData.append('why', formData.why || '')
 			netlifyFormData.append('consent', formData.consent ? 'Yes' : 'No')
 
-			// Submit to Netlify
-			const response = await fetch('/', {
+			// Submit to Netlify Forms via static HTML file
+			const response = await fetch('/__forms.html', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: new URLSearchParams(netlifyFormData as any).toString()
@@ -135,14 +135,7 @@ export default function WaitlistForm() {
 			onSubmit={handleSubmit}
 			className="w-full max-w-sm sm:max-w-md mx-auto space-y-4 sm:space-y-6 px-4 sm:px-6 lg:px-0"
 			noValidate
-			name="waitlist"
-			method="POST"
-			netlify-honeypot="bot-field"
-			data-netlify="true"
 		>
-			{/* Hidden fields for Netlify */}
-			<input type="hidden" name="form-name" value="waitlist" />
-			<input type="hidden" name="bot-field" />
 			
 			{/* Email Input - Required */}
 			<div>
