@@ -1,0 +1,12 @@
+[build]
+  # Build command
+  command = "cd client && npm install && npm run build"
+  
+  # Directory to publish
+  publish = "client/.next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
