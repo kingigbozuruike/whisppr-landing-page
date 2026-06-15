@@ -13,10 +13,10 @@ export function SampleSMS() {
 					{/* Section Header */}
 					<FadeInUpDiv className="text-center mb-12 lg:mb-16">
 						<h2 className="font-bold mb-4 lg:mb-6 text-green" style={{ fontSize: 'clamp(2.25rem, 4vw, 4rem)' }}>
-							Sample SMS Format
+							The check-in your Circle gets
 						</h2>
 						<p className="text-xl lg:text-2xl text-muted max-w-2xl mx-auto leading-relaxed">
-							What your contacts actually receive
+							When an alert resolves as a false alarm, your Circle gets a gentle check-in — not a panic.
 						</p>
 					</FadeInUpDiv>
 
@@ -34,16 +34,10 @@ export function SampleSMS() {
 							</div>
 
 							{/* SMS Content */}
-							<div className="bg-panel/20 rounded-2xl p-4 font-mono text-sm">
+							<div className="bg-panel/20 rounded-2xl p-4 text-sm">
 								<div className="space-y-2">
-									<p className="text-text">
-										<strong>ALERT:</strong> Alex needs help
-									</p>
-									<p className="text-text">
-										Time: 8:42 PM
-									</p>
-									<p className="text-accent underline">
-										https://maps.apple.com/...
+									<p className="text-text leading-relaxed">
+										Hey [Name], [User] recently activated Whisppr. We believe it was a false alarm. Do you mind checking on them?
 									</p>
 									<p className="text-muted text-xs mt-3 italic">
 										Reply STOP to unsubscribe

@@ -30,10 +30,10 @@ export function EmergencySpecs() {
 									<Zap className="w-6 lg:w-8 h-6 lg:h-8 text-accent" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									Low latency path
+									~20 seconds, tap to dispatch
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									trigger→enqueue ≤1s; enqueue→SMS ≤3s p50 / ≤8s p95 in healthy networks.
+									A 5-second cancel window plus a ~15-second trained-agent confirmation, then escalation to responders.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -45,10 +45,10 @@ export function EmergencySpecs() {
 									<Shield className="w-6 lg:w-8 h-6 lg:h-8 text-mint" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									High reliability
+									Dual-layer filtration
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Alert delivery targets ≥99.9% monthly success with delivery receipts.
+									Your 5-second cancel plus the agent&apos;s verification reduce false dispatches before help is ever sent.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -63,7 +63,7 @@ export function EmergencySpecs() {
 									Battery-aware
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Minimal background work; quick precise fix when possible.
+									Minimal background work; a fast, precise location fix when it matters.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -72,7 +72,7 @@ export function EmergencySpecs() {
 					{/* Small Caption */}
 					<FadeInUpDiv className="text-center">
 						<p className="text-sm text-muted italic">
-							Acceptance goals include 99.5% undo reliability and p95 SMS in ≤8s.
+							Timings reflect the full tap-to-dispatch flow: a 5-second user cancel plus a ~15-second trained-agent confirmation.
 						</p>
 					</FadeInUpDiv>
 				</div>

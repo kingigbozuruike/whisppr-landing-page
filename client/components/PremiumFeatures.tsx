@@ -1,40 +1,53 @@
 'use client'
 
-import { 
-	FadeInUpDiv, 
+import {
+	FadeInUpDiv,
 	StaggerContainer,
 } from '@/components/Motion'
-import { Phone, MapPin, Heart, Users2, Watch } from 'lucide-react'
+import { Check } from 'lucide-react'
+
+// TODO(owner): confirm $4.99/mo is public-ready before publishing.
+// TODO(owner): confirm GSafe integration + GSU pilot wording before publishing (see Campus section).
+const plans = [
+	{
+		name: 'Standard',
+		price: 'Free',
+		note: 'For everyone',
+		highlighted: false,
+		features: [
+			'Silent SOS',
+			'5-second cancel',
+			'RapidSOS agent confirmation',
+			'Live location + health data to responders',
+			'False-alarm check-in to your Circle',
+		],
+	},
+	{
+		name: 'Whisppr+',
+		price: '$4.99',
+		cadence: '/mo',
+		note: 'Everything in Standard, plus',
+		highlighted: true,
+		features: [
+			'Ghost Mode — trigger with no screen feedback',
+			'Cloud audio/video evidence recording',
+			'Apple Watch activation',
+		],
+	},
+	{
+		name: 'School Sponsored',
+		price: 'via your institution',
+		note: 'Whisppr+ for every student',
+		highlighted: false,
+		features: [
+			'Whisppr+ features for every student',
+			'GSafe integration',
+			'On/off-campus routing to campus police or 911',
+		],
+	},
+]
 
 export function PremiumFeatures() {
-	const premiumFeatures = [
-		{
-			icon: Phone,
-			title: 'Fake Call',
-			description: 'Server-placed PSTN call to your phone (compliant; no spoofing).'
-		},
-		{
-			icon: MapPin,
-			title: 'Live tracking window',
-			description: 'Share periodic pings for N minutes.'
-		},
-		{
-			icon: Heart,
-			title: 'Vibe checks',
-			description: 'Gentle pings with auto-escalation if you don\'t respond.'
-		},
-		{
-			icon: Users2,
-			title: 'Profiles',
-			description: 'Pick who gets alerted (e.g., "Roommate only", "All contacts").'
-		},
-		{
-			icon: Watch,
-			title: 'Apple Watch',
-			description: 'SOS via complication/App Intent.'
-		}
-	]
-
 	return (
 		<section className="section bg-panel/5 text-text">
 			<div className="container">
@@ -42,46 +55,56 @@ export function PremiumFeatures() {
 					{/* Section Header */}
 					<FadeInUpDiv className="text-center mb-12 lg:mb-16">
 						<h2 className="font-bold mb-4 lg:mb-6 text-green" style={{ fontSize: 'clamp(2.25rem, 4vw, 4rem)' }}>
-							Premium <span className="text-sm text-white">(coming soon)</span>
+							Plans
 						</h2>
 						<p className="text-xl lg:text-2xl text-muted max-w-2xl mx-auto leading-relaxed">
-							Advanced features for enhanced safety and peace of mind
+							Three ways to get Whisppr — from free to fully sponsored by your school.
 						</p>
 					</FadeInUpDiv>
 
-					{/* Cards Grid */}
-					<StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-						{premiumFeatures.map((feature, index) => {
-							const IconComponent = feature.icon
-							
-							return (
-								<FadeInUpDiv key={feature.title}>
-									<div className="card-glass h-full p-6 lg:p-8 relative">
-										{/* Premium Badge */}
-										<div className="absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium bg-accent/20 text-accent border border-accent/30">
-											Premium
+					{/* Plan Cards */}
+					<StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+						{plans.map((plan) => (
+							<FadeInUpDiv key={plan.name}>
+								<div
+									className={`relative h-full p-6 lg:p-8 rounded-2xl backdrop-blur-sm flex flex-col ${
+										plan.highlighted
+											? 'border-2 border-accent bg-accent/10 shadow-glow'
+											: 'border border-panel/40 bg-panel/20'
+									}`}
+								>
+									{plan.highlighted && (
+										<div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-semibold bg-accent text-bg">
+											Most popular
 										</div>
-										
-										<div className="flex items-start space-x-3 lg:space-x-4">
-											<div className="flex-shrink-0 w-10 lg:w-12 h-10 lg:h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-												<IconComponent 
-													className="w-5 lg:w-6 h-5 lg:h-6 text-accent" 
-													aria-hidden="true" 
-												/>
-											</div>
-											<div className="flex-1 min-w-0 pr-12">
-												<h3 className="text-lg lg:text-xl font-semibold mb-2 lg:mb-3 text-text">
-													{feature.title}
-												</h3>
-												<p className="text-sm lg:text-base text-muted leading-relaxed">
-													{feature.description}
-												</p>
-											</div>
-										</div>
+									)}
+
+									<h3 className="text-xl lg:text-2xl font-bold text-text mb-1">
+										{plan.name}
+									</h3>
+									<div className="mb-1">
+										<span className="text-2xl lg:text-3xl font-bold text-accent">
+											{plan.price}
+										</span>
+										{plan.cadence && (
+											<span className="text-base text-muted">{plan.cadence}</span>
+										)}
 									</div>
-								</FadeInUpDiv>
-							)
-						})}
+									<p className="text-sm text-muted mb-6">{plan.note}</p>
+
+									<ul className="space-y-3" role="list">
+										{plan.features.map((feature) => (
+											<li key={feature} className="flex items-start gap-3">
+												<Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
+												<span className="text-sm lg:text-base text-muted leading-relaxed">
+													{feature}
+												</span>
+											</li>
+										))}
+									</ul>
+								</div>
+							</FadeInUpDiv>
+						))}
 					</StaggerContainer>
 				</div>
 			</div>

@@ -73,7 +73,7 @@ export default function FinalCTA() {
 						variants={shouldReduceMotion ? {} : subheadVariants}
 						className="text-lg lg:text-xl xl:text-2xl text-muted mb-12 lg:mb-16 max-w-2xl mx-auto leading-relaxed"
 					>
-						Join the waitlist to help us validate low-latency alerts, reliable undo, and disguise flows before 1.0.
+						Join the waitlist to be first when Whisppr reaches your campus — silent SOS, real dispatch, total discretion.
 					</motion.p>
 
 					{/* Waitlist Form */}
@@ -88,6 +88,9 @@ export default function FinalCTA() {
 					>
 						<p className="text-muted text-sm max-w-xl mx-auto">
 							No spam, ever. We&apos;ll only email you with important updates about Whisppr&apos;s development and launch.
+						</p>
+						<p className="text-muted text-xs max-w-xl mx-auto mt-4">
+							Whisppr is not a replacement for emergency services. If you are in immediate danger and able to safely call 911 directly, please do so.
 						</p>
 					</motion.div>
 				</motion.div>

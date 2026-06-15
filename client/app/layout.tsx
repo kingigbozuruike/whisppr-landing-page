@@ -14,9 +14,9 @@ const karla = Karla({
 })
 
 export const metadata: Metadata = {
-	title: 'Whisppr — Silent SOS to trusted contacts',
-	description: 'Discreetly alert trusted contacts with your live location via iPhone widgets or Shortcuts. 5-second undo. Privacy-first.',
-	keywords: ['emergency', 'SOS', 'safety', 'location', 'iPhone', 'privacy'],
+	title: 'Whisppr — Silent SOS that dispatches real help',
+	description: 'A discreet personal-safety app. Trigger a silent SOS, a trained RapidSOS agent confirms it\'s real, then dispatches 911 or campus police with your live location and health info — on campus or off. 5-second cancel. Privacy-first.',
+	keywords: ['emergency', 'SOS', 'safety', 'RapidSOS', 'campus safety', '911 dispatch', 'location', 'iPhone', 'privacy'],
 	authors: [{ name: 'Whisppr' }],
 	icons: {
 		icon: '/favicon.ico',
@@ -24,30 +24,30 @@ export const metadata: Metadata = {
 		apple: '/apple-touch-icon.png',
 	},
 	openGraph: {
-		title: 'Whisppr — Silent SOS to trusted contacts',
-		description: 'Discreetly alert trusted contacts with your live location via iPhone widgets or Shortcuts. 5-second undo. Privacy-first.',
+		title: 'Whisppr — Silent SOS that dispatches real help',
+		description: 'A discreet personal-safety app. Trigger a silent SOS, a trained RapidSOS agent confirms it\'s real, then dispatches 911 or campus police with your live location and health info — on campus or off. 5-second cancel. Privacy-first.',
 		type: 'website',
 		locale: 'en_US',
-		url: 'https://whisppr.app',
+		url: 'https://whisppr.us',
 		siteName: 'Whisppr',
 		images: [
 			{
 				url: '/og.png',
 				width: 1200,
 				height: 630,
-				alt: 'Whisppr - Silent SOS to trusted contacts',
+				alt: 'Whisppr - Silent SOS that dispatches real help via RapidSOS',
 			},
 		],
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Whisppr — Silent SOS to trusted contacts',
-		description: 'Discreetly alert trusted contacts with your live location via iPhone widgets or Shortcuts. 5-second undo. Privacy-first.',
+		title: 'Whisppr — Silent SOS that dispatches real help',
+		description: 'A discreet personal-safety app. Trigger a silent SOS, a trained RapidSOS agent confirms it\'s real, then dispatches 911 or campus police with your live location and health info — on campus or off. 5-second cancel. Privacy-first.',
 		images: ['/og.png'],
 		creator: '@whisppr',
 		site: '@whisppr',
 	},
-	metadataBase: new URL('https://whisppr.app'),
+	metadataBase: new URL('https://whisppr.us'),
 }
 
 export const viewport: Viewport = {

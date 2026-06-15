@@ -39,7 +39,7 @@ export default function Footer() {
 					<div className="flex-1">
 						<p className="text-sm text-muted leading-relaxed max-w-md">
 							<span className="font-medium text-text">Important:</span>{' '}
-							Whisppr is not a substitute for emergency services. For immediate life-threatening emergencies, call 911 or your local emergency number.
+							Whisppr is not a replacement for emergency services. If you are in immediate danger and able to safely call 911 directly, please do so.
 						</p>
 					</div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
 				>
 					<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
 						<p className="text-xs text-muted">
-							© 2025 Whisppr. All rights reserved.
+							© 2026 Whisppr. All rights reserved.
 						</p>
 						<p className="text-xs text-muted">
 							Built with privacy and safety in mind.

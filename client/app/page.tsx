@@ -1,7 +1,9 @@
 'use client'
 
 import { Hero } from '@/components/Hero'
+import { DemoVideo } from '@/components/DemoVideo'
 import { HowItWorks } from '@/components/HowItWorks'
+import { CampusSafety } from '@/components/CampusSafety'
 import { EmergencySpecs } from '@/components/EmergencySpecs'
 import Features from '@/components/Features'
 import { SampleSMS } from '@/components/SampleSMS'
@@ -20,9 +22,19 @@ export default function Home() {
 				<Hero />
 			</section>
 
+			{/* Demo Video Section */}
+			<section id="demo">
+				<DemoVideo />
+			</section>
+
 			{/* How It Works Section */}
 			<section id="how-it-works">
 				<HowItWorks />
+			</section>
+
+			{/* Campus / Institutional Section */}
+			<section id="campus">
+				<CampusSafety />
 			</section>
 
 			{/* Emergency Specs Section */}

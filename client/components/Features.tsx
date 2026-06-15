@@ -2,51 +2,54 @@
 
 import { motion } from 'framer-motion'
 import { useReduced } from './Motion'
-import { 
-	Zap, 
-	Clock, 
-	Users, 
-	Eye, 
-	Shield, 
-	Crown 
+import {
+	Zap,
+	Clock,
+	Users,
+	HeartPulse,
+	Timer,
+	EyeOff
 } from 'lucide-react'
 
+// TODO(owner): "Disguise mode" (Calculator/Notes alternate icon) was removed in favor of
+// Ghost Mode as the discretion mechanism. Decide whether to also keep classic alternate-icon
+// disguise as a separate feature.
 const features = [
 	{
 		icon: Zap,
 		title: 'Discreet triggers',
-		description: 'Widgets, Shortcuts, App Intents; Back Tap docs for Shortcut.',
+		description: 'Trigger from an iPhone widget, the Action Button, Apple Watch, or in-app — no unlock required.',
 		badge: 'MVP'
 	},
 	{
 		icon: Clock,
-		title: '5-second Undo',
-		description: 'Cancel from a local notification action before anything leaves your phone.',
+		title: '5-second cancel',
+		description: 'A countdown lets you cancel an accidental activation before anything leaves your phone.',
 		badge: 'MVP'
 	},
 	{
 		icon: Users,
-		title: 'Trusted contacts',
-		description: 'Add & verify 2–3 contacts so they\'re ready when you need them.',
+		title: 'Whisppr Circle',
+		description: 'Add and verify the people we check in with. If an alert resolves as a false alarm, they get a gentle text.',
 		badge: 'MVP'
 	},
 	{
-		icon: Eye,
-		title: 'Location in the alert',
-		description: 'Name, timestamp, and a live/location link in the SMS.',
+		icon: HeartPulse,
+		title: 'Live location + health data',
+		description: 'Your live location and health profile are shared with responders during an active alert.',
 		badge: 'MVP'
 	},
 	{
-		icon: Shield,
-		title: 'Disguise mode',
-		description: 'Alternate icon and a simple landing shell (Calculator/Notes-style).',
+		icon: Timer,
+		title: 'Meeting Timer',
+		description: 'Set a check-in timer. Miss it, and a RapidSOS agent tries to reach you — no response escalates to dispatch.',
 		badge: 'MVP'
 	},
 	{
-		icon: Crown,
-		title: 'Premium features',
-		description: 'Fake Call, Live tracking, Vibe checks, Profiles, Apple Watch.',
-		badge: 'Soon'
+		icon: EyeOff,
+		title: 'Ghost Mode',
+		description: 'Whisppr+: trigger SOS with zero on-screen feedback — only a haptic confirms.',
+		badge: 'Whisppr+'
 	}
 ]
 
@@ -114,9 +117,9 @@ export default function Features() {
 									>
 										{/* Badge */}
 										<div className={`absolute top-4 right-4 px-2 py-1 rounded-full text-xs font-medium ${
-											feature.badge === 'MVP' 
-												? 'bg-green/20 text-green border border-green/30' 
-												: 'bg-coral/20 text-coral border border-coral/30'
+											feature.badge === 'MVP'
+												? 'bg-green/20 text-green border border-green/30'
+												: 'bg-accent/20 text-accent border border-accent/30'
 										}`}>
 											{feature.badge}
 										</div>

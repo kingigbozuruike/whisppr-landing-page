@@ -9,27 +9,27 @@ const faqData = [
 	{
 		id: 'faq-1',
 		question: 'Does Whisppr call 911?',
-		answer: 'No. We notify your contacts. We don\'t route emergency services; we show a tip linking to iOS Emergency SOS.'
+		answer: 'Yes — through RapidSOS. When you trigger an alert and don\'t cancel within 5 seconds, a trained RapidSOS agent confirms the emergency and dispatches 911 (off-campus) or campus police (on-campus) with your live location and health data.'
 	},
 	{
-		id: 'faq-2', 
-		question: 'Why a 5-second undo?',
-		answer: 'To prevent accidental sends while keeping response time low. It\'s built into the alert pipeline.'
+		id: 'faq-2',
+		question: 'Why a 5-second cancel?',
+		answer: 'It prevents accidental dispatches while keeping response fast. Combined with the agent\'s ~15-second confirmation, it forms a dual-layer filter against false alarms — you stay in control the whole time.'
 	},
 	{
 		id: 'faq-3',
-		question: 'How quickly do messages go out?',
-		answer: 'Target p95 SMS within 8 seconds after trigger (healthy network).'
+		question: 'How does on/off-campus routing work?',
+		answer: 'On campus, alerts route to your campus police; off campus, they route to 911 via RapidSOS. Either way, your live location and health data travel with the alert.'
 	},
 	{
 		id: 'faq-4',
-		question: 'What if I\'m offline or GPS fails?',
-		answer: 'We queue the alert to send when you\'re back online, and can fall back to last known location with accuracy noted.'
+		question: 'Can I activate from Apple Watch or a widget?',
+		answer: 'Yes. Trigger from an iPhone widget, the Action Button, Apple Watch, or inside the app — no unlock required.'
 	},
 	{
 		id: 'faq-5',
-		question: 'Can I disguise the app?',
-		answer: 'Yes—alternate icon + simple shell (Calculator/Notes-style).'
+		question: 'What is Ghost Mode?',
+		answer: 'Ghost Mode (Whisppr+) triggers an SOS with zero on-screen feedback — only a haptic confirms — so it\'s invisible to anyone watching your screen.'
 	}
 ]
 

@@ -4,7 +4,7 @@ import {
 	FadeInUpDiv, 
 	StaggerContainer,
 } from '@/components/Motion'
-import { Smartphone, MessageSquare, Eye } from 'lucide-react'
+import { Smartphone, MessageSquare, EyeOff } from 'lucide-react'
 
 export function IOSRealities() {
 	return (
@@ -33,7 +33,7 @@ export function IOSRealities() {
 									Fast entry points
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Widgets & Shortcuts are the fastest safe entry points; some tasks still need a quick app foreground.
+									Widgets, the Action Button, and Apple Watch are the fastest entry points — no unlock required. Some tasks still need a quick app foreground.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -45,10 +45,10 @@ export function IOSRealities() {
 									<MessageSquare className="w-6 lg:w-8 h-6 lg:h-8 text-mint" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									SMS routing
+									Server-side messaging
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									iOS won&apos;t allow silent device-sent SMS; we dispatch via backend/Twilio.
+									Emergency dispatch goes through RapidSOS; false-alarm check-ins to your Circle are sent server-side (iOS won&apos;t allow silent device-sent SMS).
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -57,13 +57,15 @@ export function IOSRealities() {
 						<FadeInUpDiv>
 							<div className="card-glass p-6 lg:p-8 h-full">
 								<div className="w-12 lg:w-16 h-12 lg:h-16 bg-coral/10 rounded-2xl flex items-center justify-center mb-4 lg:mb-6">
-									<Eye className="w-6 lg:w-8 h-6 lg:h-8 text-coral" aria-hidden="true" />
+									<EyeOff className="w-6 lg:w-8 h-6 lg:h-8 text-coral" aria-hidden="true" />
 								</div>
+								{/* TODO(owner): classic alternate-icon disguise was replaced by Ghost Mode here.
+								    Decide whether to keep alternate-icon disguise as a separate capability. */}
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									Disguise mode
+									Ghost Mode
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Alternate icons are fully supported for disguise.
+									On Whisppr+, Ghost Mode triggers an SOS with no on-screen feedback — only a haptic confirms.
 								</p>
 							</div>
 						</FadeInUpDiv>

@@ -4,7 +4,7 @@ import {
 	FadeInUpDiv, 
 	StaggerContainer,
 } from '@/components/Motion'
-import { Smartphone, MapPin, Clock, MessageSquare } from 'lucide-react'
+import { Smartphone, Clock, Headphones, Siren } from 'lucide-react'
 
 export function HowItWorks() {
 	return (
@@ -17,7 +17,7 @@ export function HowItWorks() {
 							How it works
 						</h2>
 						<p className="text-xl lg:text-2xl text-muted max-w-2xl mx-auto leading-relaxed">
-							The exact high-level SOS sequence implemented in the app.
+							From a discreet tap to real help on the way — in about 20 seconds.
 						</p>
 					</FadeInUpDiv>
 
@@ -33,7 +33,7 @@ export function HowItWorks() {
 									Discreet trigger
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Start from an iPhone widget, Siri Shortcut, or inside the app—built on App Intents.
+									Start from an iPhone widget, the Action Button, Apple Watch, or inside the app. No unlock required.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -42,13 +42,13 @@ export function HowItWorks() {
 						<FadeInUpDiv>
 							<div className="card-glass p-6 lg:p-8 h-full">
 								<div className="w-12 lg:w-16 h-12 lg:h-16 bg-mint/10 rounded-2xl flex items-center justify-center mb-4 lg:mb-6">
-									<MapPin className="w-6 lg:w-8 h-6 lg:h-8 text-mint" aria-hidden="true" />
+									<Clock className="w-6 lg:w-8 h-6 lg:h-8 text-mint" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									Location snap
+									5-second cancel
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									Whisppr grabs a quick single location fix (or safely falls back to last known if it can&apos;t get a precise one fast).
+									A countdown lets you undo an accidental activation before anything is sent.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -57,13 +57,13 @@ export function HowItWorks() {
 						<FadeInUpDiv>
 							<div className="card-glass p-6 lg:p-8 h-full">
 								<div className="w-12 lg:w-16 h-12 lg:h-16 bg-coral/10 rounded-2xl flex items-center justify-center mb-4 lg:mb-6">
-									<Clock className="w-6 lg:w-8 h-6 lg:h-8 text-coral" aria-hidden="true" />
+									<Headphones className="w-6 lg:w-8 h-6 lg:h-8 text-coral" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									5-second grace
+									Trained-agent confirmation
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									An undo window gives you five seconds to cancel accidental taps before anything is sent.
+									If you don&apos;t cancel, a RapidSOS agent listens for ~15 seconds with your live location and health data, confirming a real emergency (dual-layer filtration).
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -72,13 +72,13 @@ export function HowItWorks() {
 						<FadeInUpDiv>
 							<div className="card-glass p-6 lg:p-8 h-full">
 								<div className="w-12 lg:w-16 h-12 lg:h-16 bg-green/10 rounded-2xl flex items-center justify-center mb-4 lg:mb-6">
-									<MessageSquare className="w-6 lg:w-8 h-6 lg:h-8 text-green" aria-hidden="true" />
+									<Siren className="w-6 lg:w-8 h-6 lg:h-8 text-green" aria-hidden="true" />
 								</div>
 								<h3 className="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-text">
-									Instant alerts
+									Dispatch
 								</h3>
 								<p className="text-sm lg:text-base text-muted leading-relaxed">
-									If not canceled, your verified contacts get a text with your name, time, and a maps link to your location.
+									Help is routed to 911 (off-campus) or campus police (on-campus). About 20 seconds from tap to dispatch. False alarm? The agent cancels, and your Whisppr Circle gets a check-in text.
 								</p>
 							</div>
 						</FadeInUpDiv>
@@ -89,15 +89,15 @@ export function HowItWorks() {
 						<div className="inline-flex flex-wrap items-center justify-center gap-4 lg:gap-6 p-4 lg:p-6 rounded-2xl border border-green/20 bg-green/5">
 							<div className="flex items-center gap-2 text-sm">
 								<div className="w-2 h-2 bg-green rounded-full"></div>
-								<span className="text-muted">trigger→enqueue ≤1s</span>
+								<span className="text-muted">5-second cancel window</span>
 							</div>
 							<div className="flex items-center gap-2 text-sm">
 								<div className="w-2 h-2 bg-green rounded-full"></div>
-								<span className="text-muted">SMS ≤8s p95</span>
+								<span className="text-muted">~15-second agent confirmation</span>
 							</div>
 							<div className="flex items-center gap-2 text-sm">
 								<div className="w-2 h-2 bg-green rounded-full"></div>
-								<span className="text-muted">≥99.9% delivery</span>
+								<span className="text-muted">~20 seconds to dispatch</span>
 							</div>
 						</div>
 					</FadeInUpDiv>

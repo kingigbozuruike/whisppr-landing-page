@@ -4,22 +4,24 @@ import { motion } from 'framer-motion'
 import { useReduced } from './Motion'
 import { Users } from 'lucide-react'
 
+// TODO(owner): "Parent/guardian (consented) tracking" persona was removed — it conflicts with the
+// privacy-first positioning and isn't in the current plan. Confirm removal, or restore if desired.
 const personas = [
 	{
-		title: 'Student',
-		description: 'Fast one-tap SOS + fake call for an exit.'
+		title: 'College students',
+		description: 'Especially women 18–25, who face heightened risk of stalking, harassment, and gender-based violence.'
 	},
 	{
-		title: 'Night-shift / rideshare',
-		description: 'Silent trigger; share location with multiple contacts.'
+		title: 'Survivors',
+		description: 'Domestic-violence survivors: Ghost Mode discretion + a 5-second cancel to avoid accidental sends.'
 	},
 	{
-		title: 'Survivor',
-		description: 'Disguise mode + 5-second undo to avoid accidental sends.'
+		title: 'Night-shift / rideshare / gig workers',
+		description: 'Silent trigger and real dispatch when working alone — on campus or off.'
 	},
 	{
-		title: 'Parent/guardian (consented)',
-		description: 'Defined windows and boundaries for tracking/check-ins.'
+		title: 'LGBTQ+ users',
+		description: 'Added discretion for those facing targeted harassment or violence.'
 	}
 ]
 

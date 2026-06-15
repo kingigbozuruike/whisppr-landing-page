@@ -14,7 +14,7 @@ const privacyPoints = [
 		description: 'No alerts to unverified numbers; rate limits prevent abuse.'
 	},
 	{
-		title: 'Clear consent for guardian/premium features',
+		title: 'Clear consent for premium features',
 		description: 'Explicit opt-in only.'
 	},
 	{
@@ -22,8 +22,8 @@ const privacyPoints = [
 		description: 'Location pings have TTL; you can delete all data.'
 	},
 	{
-		title: '911 policy',
-		description: 'Whisppr does not route to emergency services; we provide native iOS SOS tips.'
+		title: 'Emergency dispatch',
+		description: 'Whisppr connects you to a trained RapidSOS agent who shares your live location and health data with 911 or campus police. Data is transmitted only during an active alert, encrypted in transit, and purged after the alert resolves unless legally required.'
 	}
 ]
 
