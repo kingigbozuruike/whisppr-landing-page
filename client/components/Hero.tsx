@@ -17,15 +17,9 @@ export function Hero() {
 					{/* Left Column - Text Content */}
 					<StaggerContainer className="max-w-2xl lg:max-w-none w-full">
 						<FadeInUpDiv>
-							<p className="text-sm sm:text-base font-semibold uppercase tracking-wider text-accent mb-3">
-								The future of discreet personal security.
-							</p>
-						</FadeInUpDiv>
-
-						<FadeInUpDiv>
 							<h1 className="font-bold leading-tight mb-4 sm:mb-6 lg:mb-6" style={{ fontSize: 'clamp(2rem, 8vw, 4.5rem)' }}>
 								Silent SOS.{' '}
-								<span className="text-accent">Real help</span>, dispatched.
+								<span className="text-accent">Safety</span> at your fingertips.
 							</h1>
 						</FadeInUpDiv>
 
